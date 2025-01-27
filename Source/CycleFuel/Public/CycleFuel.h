@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
-
-/* FactoryGame headers */
 #include "FGPlayerController.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(CycleFuel, Verbose, All);

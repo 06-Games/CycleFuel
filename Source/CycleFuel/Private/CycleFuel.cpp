@@ -2,7 +2,6 @@
 
 #include "CycleFuel.h"
 #include "CycleFuelSubsystem.h"
-//#pragma optimize("", off)
 
 #define LOCTEXT_NAMESPACE "FCycleFuelModule"
 DEFINE_LOG_CATEGORY(CycleFuel);
@@ -11,7 +10,7 @@ void FCycleFuelModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 	OnInputInitializedHandle = AFGCharacterPlayer::OnPlayerInputInitialized.AddLambda(
-		[this](AFGCharacterPlayer* CharacterPlayer, UInputComponent* InputComponent)
+		[this](const AFGCharacterPlayer* CharacterPlayer, UInputComponent* InputComponent)
 		{
 			if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 				if (UCycleFuelSubsystem* Subsystem = CharacterPlayer->GetWorld()->GetSubsystem<UCycleFuelSubsystem>())
