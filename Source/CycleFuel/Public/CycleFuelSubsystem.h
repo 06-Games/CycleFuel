@@ -11,9 +11,6 @@ class CYCLEFUEL_API UCycleFuelSubsystem : public UWorldSubsystem
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Control|Input Actions")
-	UInputAction* CycleKey = nullptr;
-
 	void BindPlayerActions(const AFGCharacterPlayer* CharacterPlayer, UEnhancedInputComponent* EnhancedInputComponent);
 	void ChangeFuel(const FInputActionValue& ActionValue, const AFGCharacterPlayer* CharacterPlayer);
 };

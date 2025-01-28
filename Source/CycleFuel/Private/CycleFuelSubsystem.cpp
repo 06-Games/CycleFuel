@@ -4,12 +4,20 @@
 void UCycleFuelSubsystem::BindPlayerActions(const AFGCharacterPlayer* CharacterPlayer,
                                             UEnhancedInputComponent* EnhancedInputComponent)
 {
-	const UInputAction* Input = UFGInputLibrary::FindInputActionByMappingName(
-		CharacterPlayer->GetController<APlayerController>(), FName(TEXT("CycleKey"))).LoadSynchronous();
-	EnhancedInputComponent->BindAction(Input, ETriggerEvent::Triggered, this, &UCycleFuelSubsystem::ChangeFuel,
-	                                   CharacterPlayer);
+	const UInputAction* CycleKey = UFGInputLibrary::FindInputActionByMappingName(
+		CharacterPlayer->GetController<APlayerController>(),
+		FName(TEXT("CycleKey"))
+	).LoadSynchronous();
+	EnhancedInputComponent->BindAction(
+		CycleKey,
+		ETriggerEvent::Triggered,
+		this,
+		&UCycleFuelSubsystem::ChangeFuel,
+		CharacterPlayer
+	);
 }
 
+// ReSharper disable once CppMemberFunctionMayBeStatic
 void UCycleFuelSubsystem::ChangeFuel(const FInputActionValue& ActionValue, const AFGCharacterPlayer* CharacterPlayer)
 {
 	if (!ActionValue.IsNonZero())
@@ -17,15 +25,27 @@ void UCycleFuelSubsystem::ChangeFuel(const FInputActionValue& ActionValue, const
 
 	const UFGInventoryComponentEquipment* Slot = CharacterPlayer->GetEquipmentSlot(EEquipmentSlot::ES_BACK);
 	AFGEquipment* Equipment = Slot->GetEquipmentInSlot();
-	if(!Equipment) return;
+	if (!Equipment) return;
+
 	TArray<TSubclassOf<UFGItemDescriptor>> Consumables;
 	Equipment->GetSupportedConsumableTypes(Consumables);
 	const TSubclassOf<UFGItemDescriptor> SelectedConsumable = Equipment->GetSelectedConsumableType();
 	UFGInventoryComponent* Inventory = CharacterPlayer->GetInventory();
-	Consumables = Consumables.FilterByPredicate([Inventory](const TSubclassOf<UFGItemDescriptor> Consumable) { return Inventory->HasItems(Consumable, 1);});
-	if(Consumables.Num() == 0) return;
-	if(Consumables.Num() == 1) Equipment->SetSelectedConsumableType(Consumables[0]);
-	else Equipment->SetSelectedConsumableType(Consumables[(Consumables.IndexOfByKey(SelectedConsumable) + 1) % Consumables.Num()]);
+	Consumables = Consumables.FilterByPredicate([Inventory](const TSubclassOf<UFGItemDescriptor> Consumable)
+	{
+		return Inventory->HasItems(Consumable, 1);
+	});
 
-	UE_LOG(CycleFuel, Verbose, TEXT("Hello World!"));
+	switch (Consumables.Num())
+	{
+	case 0:
+		return;
+	case 1:
+		Equipment->SetSelectedConsumableType(Consumables[0]);
+		break;
+	default:
+		Equipment->SetSelectedConsumableType(
+			Consumables[(Consumables.IndexOfByKey(SelectedConsumable) + 1) % Consumables.Num()]);
+		break;
+	}
 }

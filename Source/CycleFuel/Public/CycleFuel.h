@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -8,7 +6,7 @@
 
 DECLARE_LOG_CATEGORY_EXTERN(CycleFuel, Verbose, All);
 
-class FCycleFuelModule : public IModuleInterface
+class FCycleFuelModule final : public IModuleInterface
 {
 public:
 	virtual void StartupModule() override;
