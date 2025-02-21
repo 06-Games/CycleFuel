@@ -3,7 +3,7 @@
 	"Version": 1,
 	"VersionName": "1.0.0",
 	"FriendlyName": "CycleFuel",
-	"Description": "Cycle through preferred fuel type",
+	"Description": "Change the fuel used by the equipment on the player's back with a single press",
 	"Category": "Modding",
 	"CreatedBy": "MazeWave, EvanG",
 	"CreatedByURL": "https://mazewave.github.io",
@@ -29,5 +29,6 @@
 		}
 	],
 	"SemVersion": "1.0.0",
-	"GameVersion": ">=383729"
+	"GameVersion": ">=383729",
+	"RequiredOnRemote": false
 }

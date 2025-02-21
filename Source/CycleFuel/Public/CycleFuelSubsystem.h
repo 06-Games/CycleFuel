@@ -11,6 +11,6 @@ class CYCLEFUEL_API UCycleFuelSubsystem : public UWorldSubsystem
 	GENERATED_BODY()
 
 public:
-	void BindPlayerActions(const AFGCharacterPlayer* CharacterPlayer, UEnhancedInputComponent* EnhancedInputComponent);
-	void ChangeFuel(const FInputActionValue& ActionValue, const AFGCharacterPlayer* CharacterPlayer);
+	void BindPlayerActions(AFGCharacterPlayer* CharacterPlayer, UEnhancedInputComponent* EnhancedInputComponent);
+	void ChangeFuel(const FInputActionValue& ActionValue, AFGCharacterPlayer* CharacterPlayer);
 };

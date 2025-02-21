@@ -6,7 +6,7 @@
 void FCycleFuelModule::StartupModule()
 {
 	OnInputInitializedHandle = AFGCharacterPlayer::OnPlayerInputInitialized.AddLambda(
-		[this](const AFGCharacterPlayer* CharacterPlayer, UInputComponent* InputComponent)
+		[this](AFGCharacterPlayer* CharacterPlayer, UInputComponent* InputComponent)
 		{
 			if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 				if (UCycleFuelSubsystem* Subsystem = CharacterPlayer->GetWorld()->GetSubsystem<UCycleFuelSubsystem>())

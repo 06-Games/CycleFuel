@@ -1,7 +1,9 @@
 ﻿#include "CycleFuelSubsystem.h"
 #include "CycleFuel.h"
+#include "FGGameUI.h"
+#include "FGJetPack.h"
 
-void UCycleFuelSubsystem::BindPlayerActions(const AFGCharacterPlayer* CharacterPlayer,
+void UCycleFuelSubsystem::BindPlayerActions(AFGCharacterPlayer* CharacterPlayer,
                                             UEnhancedInputComponent* EnhancedInputComponent)
 {
 	const UInputAction* CycleKey = UFGInputLibrary::FindInputActionByMappingName(
@@ -18,7 +20,7 @@ void UCycleFuelSubsystem::BindPlayerActions(const AFGCharacterPlayer* CharacterP
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
-void UCycleFuelSubsystem::ChangeFuel(const FInputActionValue& ActionValue, const AFGCharacterPlayer* CharacterPlayer)
+void UCycleFuelSubsystem::ChangeFuel(const FInputActionValue& ActionValue, AFGCharacterPlayer* CharacterPlayer)
 {
 	if (!ActionValue.IsNonZero())
 		return;
