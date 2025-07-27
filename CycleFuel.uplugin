@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
+	"VersionName": "1.0.1",
 	"FriendlyName": "CycleFuel",
 	"Description": "Change the fuel used by the equipment on the player's back with a single press",
 	"Category": "Modding",
@@ -25,10 +25,10 @@
 		{
 			"Name": "SML",
 			"Enabled": true,
-			"SemVersion": "^3.9.1"
+			"SemVersion": "^3.11.1"
 		}
 	],
-	"SemVersion": "1.0.0",
-	"GameVersion": ">=383729",
+	"SemVersion": "1.0.1",
+	"GameVersion": ">=415558",
 	"RequiredOnRemote": false
 }
