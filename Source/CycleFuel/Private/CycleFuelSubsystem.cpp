@@ -1,7 +1,7 @@
 ﻿#include "CycleFuelSubsystem.h"
 #include "CycleFuel.h"
-#include "FGGameUI.h"
-#include "FGJetPack.h"
+#include "UI/FGGameUI.h"
+#include "Equipment/FGJetPack.h"
 
 void UCycleFuelSubsystem::BindPlayerActions(AFGCharacterPlayer* CharacterPlayer,
                                             UEnhancedInputComponent* EnhancedInputComponent)
