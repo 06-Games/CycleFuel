@@ -9,7 +9,7 @@ This mod allows you to quickly change the fuel type used by the equipment in you
 ### Compatibility
 
 The mod is designed to work seamlessly with **any back equipment**, so it should also be compatible with other mods, but please report any issues you encounter so we can address them.  
-The mod is **purely client-based** and requires no special installation on the remote host. Its **multiplayer compatibility** has been tested on a dedicated server.
+The mod has **controller** support and is **purely client-based**. It requires no special installation on the remote host. Its **multiplayer compatibility** has been tested on a dedicated server.
 
 ### Issues
 
